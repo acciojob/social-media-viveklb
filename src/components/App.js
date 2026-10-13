@@ -87,7 +87,10 @@ function PostDetail({ posts, onUpdate }) {
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget;
-    onUpdate({ ...post, title: form.elements.postTitle.value, content: form.elements.postContent.value });
+    onUpdate(post.id, {
+      title: form.elements.postTitle.value,
+      content: form.elements.postContent.value,
+    });
     setEditing(false);
   }
 
@@ -156,8 +159,8 @@ const App = () => {
     setPosts((currentPosts) => [post, ...currentPosts]);
   }
 
-  function updatePost(updatedPost) {
-    setPosts((currentPosts) => currentPosts.map((post) => post.id === updatedPost.id ? updatedPost : post));
+  function updatePost(postId, changes) {
+    setPosts((currentPosts) => currentPosts.map((post) => post.id === postId ? { ...post, ...changes } : post));
   }
 
   function reactToPost(postId, reactionIndex) {
