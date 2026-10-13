@@ -22,16 +22,20 @@ function PostList({ posts, onReact }) {
           <p>By {post.author}</p>
           <p>{post.content}</p>
           <div>
-            {reactionNames.map((name, index) => (
-              <button
-                className="button"
-                key={name}
-                type="button"
-                onClick={() => index < 4 && onReact(post.id, index)}
-              >
-                {name} {post.reactions[index]}
-              </button>
-            ))}
+            {reactionNames.map((name, index) => {
+              const isLockedReaction = index === reactionNames.length - 1;
+              return (
+                <button
+                  className="button"
+                  key={name}
+                  type="button"
+                  disabled={isLockedReaction}
+                  onClick={() => !isLockedReaction && onReact(post.id, index)}
+                >
+                  {name} {post.reactions[index]}
+                </button>
+              );
+            })}
           </div>
           <Link className="button" to={`/posts/${post.id}`}>View Post</Link>
         </article>

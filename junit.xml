@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" time="1.983">
+  <testsuite name="Social media app" errors="0" failures="0" skipped="0" timestamp="2026-10-13T12:11:15" time="1.548" tests="1">
+    <testcase classname="Social media app keeps the fifth reaction at zero and disabled" name="Social media app keeps the fifth reaction at zero and disabled" time="0.275">
+    </testcase>
+  </testsuite>
+</testsuites>
