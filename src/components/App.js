@@ -136,16 +136,23 @@ function UsersPage({ posts }) {
   );
 }
 
-function NotificationsPage() {
-  const [refreshed, setRefreshed] = React.useState(false);
+function NotificationsPage({ posts }) {
+  const [notifications, setNotifications] = React.useState([]);
+
+  function refreshNotifications() {
+    setNotifications(posts.map((post) => ({
+      id: post.id,
+      message: `${post.author} shared a post: ${post.title}`,
+    })));
+  }
 
   return (
     <main>
       <h2>Notifications</h2>
-      <button className="button" type="button" onClick={() => setRefreshed(true)}>Refresh Notifications</button>
+      <button className="button" type="button" onClick={refreshNotifications}>Refresh Notifications</button>
       <section className="notificationsList">
-        {refreshed && ["Your feed is up to date.", "Welcome to GenZ!", "Discover what your friends are sharing."].map((notification) => (
-          <div key={notification}>{notification}</div>
+        {notifications.map((notification) => (
+          <div key={notification.id}>{notification.message}</div>
         ))}
       </section>
     </main>
@@ -189,7 +196,7 @@ const App = () => {
           <Route exact path="/create"><PostForm onCreate={createPost} /></Route>
           <Route exact path="/users/:userId"><UsersPage posts={posts} /></Route>
           <Route exact path="/users"><UsersPage posts={posts} /></Route>
-          <Route exact path="/notifications"><NotificationsPage /></Route>
+          <Route exact path="/notifications"><NotificationsPage posts={posts} /></Route>
           <Route exact path="/posts/:postId"><PostDetail posts={posts} onUpdate={updatePost} /></Route>
         </Switch>
       </div>

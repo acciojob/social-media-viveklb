@@ -11,7 +11,7 @@
   <a target="_blank" href='https://storage.googleapis.com/acciojob-open-file-collections/users.png'>(Users Page)</a>, 
   <a target="_blank" href='https://storage.googleapis.com/acciojob-open-file-collections/posts_user.png'>(User Posts)</a>
   
-- In notifications page, clicking on 'Refresh Notifications' should display notifications.
+- In notifications page, clicking on 'Refresh Notifications' should display notifications based on the current posts.
   <a target="_blank" href='https://storage.googleapis.com/acciojob-open-file-collections/notifications.png'>(Notifiations Page)</a>
 
 - User must be able to create post.
